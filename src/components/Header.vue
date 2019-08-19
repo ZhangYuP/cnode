@@ -31,6 +31,7 @@
   ul{
     float: right;
     margin: 4px;
+    margin-right: 60px;
   }
   li{
     display: inline-block;
@@ -39,6 +40,6 @@
   a{
     text-decoration: none;
     color: #cccccc;
-    font-size: 14px;
+    font-size: 13px;
   }
 </style>
