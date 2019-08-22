@@ -24,7 +24,9 @@
            'topiclist-tab': post.good !== true && post.top !== true}]">
             <span>{{post | tabFormatter}}</span>
           </span>
-          <span>{{post.title}}</span>
+          <router-link :to="{ name: 'post_content', params: { id: post.id } }">
+            <span>{{post.title}}</span>
+          </router-link>
           <span class="last_reply">{{post.last_reply_at | formatData}}</span>
         </li>
       </ul>
