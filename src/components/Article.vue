@@ -14,16 +14,16 @@
         </ul>
         <div v-html="post.content" class="topic_content"></div>
       </div>
-      <div>
+      <div id="reply">
         <div class="topbar">回复</div>
-        <div v-for="(reply, index) in post.replies">
-          <div>
-            <route-link :to="{ name: 'user_info' }">
+        <div v-for="(reply, index) in post.replies" class="replySec">
+          <div class="replyUp">
+            <router-link :to="{ name: 'user_info', params: {name: reply.author.loginname} }">
               <img :src="reply.author.avatar_url" alt="">
-            </route-link>
-            <route-link>
+            </router-link>
+            <router-link>
               <span>{{reply.author.logginname}}</span>
-            </route-link>
+            </router-link>
             <span>{{index + 1}}楼</span>
             <span v-if="reply.ups.length > 0">👍{{reply.ups.length}}</span>
             <span v-else></span>
