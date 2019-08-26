@@ -5,6 +5,9 @@
       <router-link :to="{ name: 'user_info', params: {name: userinfo.loginname} }">
         <img :src="userinfo.avatar_url" alt="">
       </router-link>
+      <router-link :to="{ name: 'user_info', params: {name: userinfo.loginname} }">
+        <span class="loginname">{{userinfo.loginname}}</span>
+      </router-link>
     </div>
     <div class="recent_topics">
       <div class="topbar">作者最近主题</div>
@@ -87,10 +90,12 @@
 <style scoped>
   .authorsummay, .recent_replies, .recent_topics {
     background-color: #fff;
+    border-radius: 3px;
+    overflow: hidden;
   }
 
   .authorinfo {
-    width: 328px;
+    width: 325px;
     float: right;
     margin-top: 0;
   }
@@ -106,18 +111,20 @@
     padding-left: 14px;
   }
 
-  ul a {
-    font-size: 12px;
+  a {
     text-decoration: none;
     color: #778087;
+  }
+
+  ul a {
+    font-size: 12px;
   }
 
   .topbar {
     padding: 10px;
     background-color: #f6f6f6;
-    height: 16px;
+    line-height: 20px;
     font-size: 12px;
-    margin-top: 10px;
   }
 
   img {
@@ -130,17 +137,13 @@
   .loginname {
     width: 100px;
     float: right;
-    margin-top: 22px;
-    margin-right: 159px;
+    margin-top: 25px;
+    margin-right: 150px;
     font-size: 14px;
+    white-space: nowrap;
   }
 
-  .loginname a {
-    text-decoration: none;
-    color: #778087;
-  }
-
-  .authersummay .topbar {
-    margin-top: 0px;
+  .authorsummay, .recent_topics {
+    margin-bottom: 13px;
   }
 </style>

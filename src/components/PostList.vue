@@ -87,6 +87,8 @@
   }
   .posts {
     margin-top: 10px;
+    border-radius: 3px;
+    overflow: hidden;
   }
   .PostList img{
     width: 30px;
