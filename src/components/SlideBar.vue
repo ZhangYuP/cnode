@@ -77,6 +77,7 @@
     },
     watch: {
       '$route'(to, from) {
+        this.isLoading = true
         this.getData()
       }
     }
