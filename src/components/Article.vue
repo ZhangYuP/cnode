@@ -26,7 +26,7 @@
             </router-link>
             <span>{{index + 1}}楼</span>
             <span>• {{reply.create_at | formatData}}</span>
-            <span v-if="reply.ups.length > 0">👍{{reply.ups.length}}</span>
+            <span v-if="reply.ups.length > 0" class="ups">👍{{reply.ups.length}}</span>
             <span v-else></span>
           </div>
           <p v-html="reply.content"></p>
@@ -52,7 +52,6 @@
             if(response.data){
               this.isLoading = false
               this.post = response.data.data
-              console.log(this.post);
             }
           })
           .catch( error => console.log(error))
@@ -127,6 +126,11 @@
   .replyUp a:nth-of-type(2) {
     margin-left: 0px;
     display: inline-block;
+  }
+
+  .ups{
+    float: right;
+    margin-top: 15px;
   }
 
   .topic_header {

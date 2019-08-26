@@ -7,11 +7,11 @@
       <ul>
         <li>
           <div class="topbar">
-            <span>全部</span>
-            <span>精华</span>
-            <span>分享</span>
-            <span>问答</span>
-            <span>招聘</span>
+            <span @click="switchTab('')" :class="{selected: tab === ''}">全部</span>
+            <span @click="switchTab('good')" :class="{selected: tab === 'good'}">精华</span>
+            <span @click="switchTab('share')" :class="{selected: tab === 'share'}">分享</span>
+            <span @click="switchTab('ask')" :class="{selected: tab === 'ask'}">问答</span>
+            <span @click="switchTab('job')" :class="{selected: tab === 'job'}">招聘</span>
           </div>
         </li>
         <li v-for="post in posts">
@@ -51,7 +51,8 @@
       return {
         isLoading: false,
         posts: [],
-        postpage: 1
+        postpage: 1,
+        tab: ''
       }
     },
     components: {
@@ -62,6 +63,7 @@
         this.$http.get('https://cnodejs.org/api/v1/topics',{
           params: {
             page: this.postpage,
+            tab: this.tab,
             limit: 20
           }
         }).then(response => {
@@ -71,6 +73,10 @@
       },
       renderList(value){
         this.postpage = value
+        this.getData()
+      },
+      switchTab(tab){
+        this.tab = tab
         this.getData()
       }
     },
@@ -160,7 +166,14 @@
     margin: 0 10px;
     cursor: pointer;
   }
-  .topbar span:hover{
+  .topbar span.selected{
+    background: #80bd01;
+    color: #fff;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 14px;
+  }
+  .topbar span:not(.selected):hover{
     color: #9e78c0;
   }
   .loading{
